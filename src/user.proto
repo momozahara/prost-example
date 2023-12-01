@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+message User {
+  string first_name = 1;
+  string last_name = 2;
+
+  // nullable Int32
+  google.protobuf.Int32Value age = 3;
+
+  enum Weight {
+    LIGHT = 0;
+    HEAVY = 1;
+  }
+
+  // nullable enum
+  oneof weight_option {
+    Weight weight = 4;
+    google.protobuf.Empty no_weight = 5;
+  }
+}
